@@ -1,0 +1,14 @@
+{
+  "name": "local-pw",
+  "version": "1.0.0",
+  "description": "Playwright e2e tests for localcoding.us",
+  "scripts": {
+    "test": "npx playwright test",
+    "report": "playwright show-report"
+  },
+  "author": "Tatty",
+  "license": "ISC",
+  "dependencies": {
+    "@playwright/test": "1.37.1"
+  }
+}
