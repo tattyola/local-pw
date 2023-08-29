@@ -20,6 +20,8 @@ module.exports = defineConfig({
   // retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
+  globalSetup: require.resolve('./utils/global-setup'),
+
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -29,6 +31,7 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    storageState: 'loggedInState.json',
   },
 
   /* Configure projects for major browsers */
