@@ -1,11 +1,12 @@
 import { expect, test } from "@playwright/test";
+import { logIn } from "../common/log-in";
 
 test.describe('Common', () => {
+    test.beforeEach(async ({ page }, testInfo) => {
+        await logIn(page, 'Astrouskaya@yahoo.com', 'Tattyola123!')
+    });
+
     test('Navigation', async ({page}) => {
-        await page.goto('https://coding.pasv.us/user/login');
-        await page.locator('#normal_login_email').fill('Astrouskaya@yahoo.com');
-        await page.locator('#normal_login_password').fill('Tattyola123!');
-        await page.locator('button[type="submit"]').click();
         await expect(page.locator('.ant-avatar-square')).toBeVisible();
         await expect(page.locator('h1')).toBeVisible();
         await expect(page.locator('h1')).toHaveText('Tatsiana Astrouskaya');
