@@ -17,5 +17,5 @@ jobs:
       - run: npm run test
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
-          LOGIN: ${{ secrets.LOGIN }}
+          LOGIN: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
