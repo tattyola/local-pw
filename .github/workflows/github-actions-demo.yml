@@ -1,0 +1,21 @@
+name: localcoding ui tests
+
+run-name: ${{ github.actor }}
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm i
+      - run: npx playwright install --with-deps
+      - run: npm run test
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          LOGIN: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
