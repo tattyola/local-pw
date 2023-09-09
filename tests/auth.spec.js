@@ -1,23 +1,23 @@
-import { expect, test } from "@playwright/test";
+import {expect, test} from '@playwright/test'
 
 test.describe('Authentication & Authorization', () => {
-    test.beforeEach(async ({ page }, testInfo) => {
-        await page.goto('/user/login');
-    });
+  test.beforeEach(async ({page}, testInfo) => {
+    await page.goto('/user/login')
+  })
 
-    test('Sign in with existing credentials', async ({ page}) => {
-        await page.locator('#normal_login_email').fill(process.env.EMAIL);
-        await page.locator('#normal_login_password').fill(process.env.PASSWORD);
-        await page.locator('button[type="submit"]').click();
-        await expect(page.locator('.ant-avatar-square')).toBeVisible();
-    })
-    test('Sign in with wrong credentials', async ({ page}) => {
-        await page.locator('#normal_login_email').fill('Fake@yahoo.com');
-        await page.locator('#normal_login_password').fill('Tattyola123!');
-        await page.locator('button[type="submit"]').click();
-        const toast = page.locator('.ant-notification-notice-message')
-        await expect(toast).toBeVisible();
-        await expect(toast).toHaveText('User login. Fail');
-        await expect(page.locator('.ant-avatar-square')).not.toBeVisible();
-    })
-});
+  test('Sign in with existing credentials', async ({page}) => {
+    await page.locator('#normal_login_email').fill(process.env.EMAIL)
+    await page.locator('#normal_login_password').fill(process.env.PASSWORD)
+    await page.locator('button[type="submit"]').click()
+    await expect(page.locator('.ant-avatar-square')).toBeVisible()
+  })
+  test('Sign in with wrong credentials', async ({page}) => {
+    await page.locator('#normal_login_email').fill('Fake@yahoo.com')
+    await page.locator('#normal_login_password').fill('Tattyola123!')
+    await page.locator('button[type="submit"]').click()
+    const toast = page.locator('.ant-notification-notice-message')
+    await expect(toast).toBeVisible()
+    await expect(toast).toHaveText('User login. Fail')
+    await expect(page.locator('.ant-avatar-square')).not.toBeVisible()
+  })
+})
