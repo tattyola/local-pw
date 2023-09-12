@@ -11,6 +11,7 @@ test.describe('Authentication & Authorization', () => {
 
     await loginPage.emailInput.fill(process.env.EMAIL)
     await loginPage.passwordInput.fill(process.env.PASSWORD)
+    await expect(loginPage.submitBtn).toBeEnabled()
     await loginPage.submitBtn.click()
     await expect(page.locator('.ant-avatar-square')).toBeVisible()
   })
