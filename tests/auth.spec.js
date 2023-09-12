@@ -1,23 +1,27 @@
-import {expect, test} from '@playwright/test'
+import { expect, test } from '../common/test'
 
 test.describe('Authentication & Authorization', () => {
-  test.beforeEach(async ({page}, testInfo) => {
-    await page.goto('/user/login')
+
+  test.beforeEach(async ({ loginPage }) => {
+    await loginPage.open()
   })
 
-  test('Sign in with existing credentials', async ({page}) => {
-    await page.locator('#normal_login_email').fill(process.env.EMAIL)
-    await page.locator('#normal_login_password').fill(process.env.PASSWORD)
-    await page.locator('button[type="submit"]').click()
+  test('Sign in with existing credentials', async ({ page, loginPage }) => {
+    // await loginPage.logIn(process.env.EMAIL, process.env.PASSWORD)
+
+    await loginPage.emailInput.fill(process.env.EMAIL)
+    await loginPage.passwordInput.fill(process.env.PASSWORD)
+    await loginPage.submitBtn.click()
     await expect(page.locator('.ant-avatar-square')).toBeVisible()
   })
-  test('Sign in with wrong credentials', async ({page}) => {
-    await page.locator('#normal_login_email').fill('Fake@yahoo.com')
-    await page.locator('#normal_login_password').fill('Tattyola123!')
-    await page.locator('button[type="submit"]').click()
-    const toast = page.locator('.ant-notification-notice-message')
-    await expect(toast).toBeVisible()
-    await expect(toast).toHaveText('User login. Fail')
+  test('Sign in with wrong credentials', async ({ page, loginPage }) => {
+    // await loginPage.logIn('Fake@yahoo.com', 'Tattyola123!')
+
+    await loginPage.emailInput.fill('Fake@yahoo.com')
+    await loginPage.passwordInput.fill('Tattyola123!')
+    await loginPage.submitBtn.click()
+    await expect(loginPage.toast).toBeVisible()
+    await expect(loginPage.toast).toHaveText('User login. Fail')
     await expect(page.locator('.ant-avatar-square')).not.toBeVisible()
   })
 })
