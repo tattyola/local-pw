@@ -1,13 +1,14 @@
 import { expect, test } from '../common/test'
+import {logInWithApi} from '../common/log-in-with-api'
 
 test.describe('Common', () => {
-  test.beforeEach(async ({ loginPage }) => {
-    await loginPage.open()
-    await loginPage.logIn(process.env.EMAIL, process.env.PASSWORD)
+  test.beforeEach(async ({page, request, context}) => {
+    await logInWithApi(page, request, context, process.env.EMAIL, process.env.PASSWORD)
   })
 
   test('Navigation', async ({page, dashboardPage}) => {
-    await expect(dashboardPage.avatar).toBeVisible()
+    await dashboardPage.page.goto('/profile/6042ea34bf6f15003a81883a')
+    await dashboardPage.avatar.waitFor()
     await expect(dashboardPage.header).toBeVisible()
     await expect(dashboardPage.header).toHaveText('Tatsiana Astrouskaya')
 
