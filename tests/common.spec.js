@@ -2,9 +2,9 @@ import { expect, test } from '../common/test'
 import {logInWithApi} from '../common/log-in-with-api'
 
 test.describe('Common', () => {
-  test.beforeEach(async ({page, request, context}) => {
-    await logInWithApi(page, request, context, process.env.EMAIL, process.env.PASSWORD)
-  })
+  // test.beforeEach(async ({page, request, context}) => {
+  //   await logInWithApi(page, request, context, process.env.EMAIL, process.env.PASSWORD)
+  // })
 
   test('Navigation', async ({page, dashboardPage}) => {
     await dashboardPage.page.goto('/profile/6042ea34bf6f15003a81883a')
