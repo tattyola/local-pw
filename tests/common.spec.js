@@ -9,6 +9,7 @@ test.describe('Common', () => {
   test('Navigation', async ({page, dashboardPage}) => {
     await dashboardPage.page.goto('/profile/6042ea34bf6f15003a81883a')
     await dashboardPage.avatar.waitFor()
+    await dashboardPage.header.waitFor()
     await expect(dashboardPage.header).toBeVisible()
     await expect(dashboardPage.header).toHaveText('Tatsiana Astrouskaya')
 
