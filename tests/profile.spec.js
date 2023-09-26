@@ -10,7 +10,6 @@ test.describe('Profile', () => {
             json.payload.name = 'It Works'
             json.payload.firstName = 'It'
             json.payload.lastName = 'Works'
-            console.log(json)
             await route.fulfill({response, json})
         })
 
