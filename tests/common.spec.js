@@ -36,6 +36,37 @@ test.describe('Common', () => {
     await expect(profilePage.header).toHaveText('Groups')
     await expect(page.locator('[data-qa="topmenu-Группы"] a')).toBeVisible()
     await expect(page).toHaveURL('/group')
+  })
 
+  test('Email confirmation alert is not visible', async ({ page, profilePage }) => {
+    await page.route('**/user/auth', async route => {
+      const response = await route.fetch()
+      const json = await response.json()
+      json.payload.emailConfirmation.confirmed = true
+      json.payload.name = 'It Works'
+      json.payload.firstName = 'It'
+      json.payload.lastName = 'Works'
+      await route.fulfill({response, json})
+    })
+
+    await profilePage.open()
+    await page.waitForLoadState('networkidle')
+    await expect(profilePage.alertMessage).not.toBeVisible()
+  })
+
+  test('Email confirmation alert is visible', async ({ page, profilePage }) => {
+    await page.route('**/user/auth', async route => {
+      const response = await route.fetch()
+      const json = await response.json()
+      json.payload.emailConfirmation.confirmed = false
+      json.payload.name = 'It Works'
+      json.payload.firstName = 'It'
+      json.payload.lastName = 'Works'
+      await route.fulfill({response, json})
+    })
+
+    await profilePage.open()
+    await page.waitForLoadState('networkidle')
+    await expect(profilePage.alertMessage).toBeVisible()
   })
 })
