@@ -4,6 +4,8 @@ export default class Page {
     constructor(page) {
         this.page = page;
         this.toast = page.locator('.ant-notification-notice-message')
+        this.alertMessage = page.locator('.ant-alert')
+        this.navbar = new Navbar(page)
 
     }
 }
