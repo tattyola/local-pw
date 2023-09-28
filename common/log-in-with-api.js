@@ -36,8 +36,6 @@ export const logInWithApi = async (page, request, context, email, password) => {
         setCookies.push(object)
     }
 
-    process.env.COOKIE = `connect_sid=${setCookies[1].value}`
-
     await page.goto('/')
     await context.addCookies(setCookies)
     await page.reload()

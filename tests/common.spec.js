@@ -10,7 +10,7 @@ test.describe('Common', () => {
     await profilePage.page.goto('/profile/6042ea34bf6f15003a81883a')
     await profilePage.avatar.waitFor()
     await expect(profilePage.header).toBeVisible()
-    await expect(profilePage.header).toHaveText('Tatsiana Astrouskaya')
+    await expect(profilePage.header).toHaveText('Tatty Astrouskaya')
 
     await profilePage.navbar.courses.click()
     await expect(page.getByText('Курсы программирования и тестирования')).toBeVisible()
