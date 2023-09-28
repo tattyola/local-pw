@@ -7,4 +7,8 @@ export default class ProfilePage extends Page {
         this.header = page.locator('h1')
 
     }
+
+    async open() {
+        await this.page.goto(`/profile/${process.env.PROFILE_ID}`)
+    }
 }
