@@ -1,5 +1,5 @@
 import {test, expect} from '../common/test'
-import {logInWithApi} from "../common/log-in-with-api";
+import { logInWithApi } from "../common/log-in-with-api";
 
 test.describe('Delivery', () => {
     test('Save city info', async ({ page, request, context, deliveryPage}) => {
