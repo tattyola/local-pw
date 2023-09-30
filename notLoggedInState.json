@@ -1,0 +1,35 @@
+{
+  "cookies": [
+    {
+      "name": "_ga",
+      "value": "GA1.1.1878966329.1696040310",
+      "domain": ".pasv.us",
+      "path": "/",
+      "expires": 1730600310.388345,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_Y93QPS2282",
+      "value": "GS1.1.1696040310.1.1.1696040310.0.0.0",
+      "domain": ".pasv.us",
+      "path": "/",
+      "expires": 1730600310.394096,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://coding.pasv.us",
+      "localStorage": [
+        {
+          "name": "lang",
+          "value": "ru"
+        }
+      ]
+    }
+  ]
+}

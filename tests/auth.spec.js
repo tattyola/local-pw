@@ -1,7 +1,6 @@
 import { expect, test } from '../common/test'
 
 test.describe('Authentication & Authorization', () => {
-
   test.beforeEach(async ({ loginPage }) => {
     await loginPage.open()
   })
